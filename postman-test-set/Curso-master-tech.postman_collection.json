@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "3d8d4ab0-0109-4eeb-b0e2-f7f80a65c17b",
+		"name": "Curso-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Curso Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "429a0353-9bc1-48db-a4cb-ca92965a4ba4",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"curso_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Linux\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"usuario\":{\n\t\t\"id\":{{user_id}}\n\t}\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cursos List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e44947c-46c9-4e5e-ad17-6fd1af594083",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curso Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d0bac14-7a25-4936-931e-206b61a869e5",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso/{{curso_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso",
+						"{{curso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curso Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09d41533-d7ed-468a-b3d2-96f176af74f3",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Linux edit\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada4.jpg\",\n\t\"usuario\":{\n\t\t\"id\":{{user_id}}\n\t}\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso/{{curso_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso",
+						"{{curso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curso Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0269a7d5-528f-420b-9fc0-36f791afab08",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso/{{curso_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso",
+						"{{curso_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
