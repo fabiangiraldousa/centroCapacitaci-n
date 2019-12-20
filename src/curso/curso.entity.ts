@@ -1,6 +1,7 @@
   
-import { Column, Entity, PrimaryGeneratedColumn,ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn,ManyToOne, OneToMany, OneToOne } from 'typeorm';
 import { Usuario } from 'src/usuario/usuario.entity';
+import { Modulo } from 'src/modulo/modulo.entity';
 
 @Entity()
 export class Curso {
@@ -18,4 +19,8 @@ export class Curso {
 
   @ManyToOne(type=>Usuario,Usuario=>Usuario.id)
   usuario:Usuario;
+  
+  @OneToMany(type=>Modulo,Modulo=>Modulo.curso)
+  modulos:Modulo[];
+
 }
