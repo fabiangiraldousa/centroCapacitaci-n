@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "974341e7-78d4-460b-a2b3-3e8a6f57b2f3",
+		"name": "Documentacion-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Documentacion Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43d3c154-17ca-4858-923a-59b7bb177484",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"documentacion_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Doc 1\",\n\t\"ruta\":\"https://github.com/typeorm/typeorm\",\n\t\"leccion\":{\n\t\t\"id\":{{leccion_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/documentacion/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"documentacion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "  Documentacion List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b11260c6-f3d8-45eb-8d8b-8450e90a0420",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/documentacion/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"documentacion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Documentacion Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f61a20d-d7f3-4f2d-a8a0-64e72211c73e",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/documentacion/{{documentacion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"documentacion",
+						"{{documentacion_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Documentacion Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ca35dd8-dbca-4e2d-8e2d-b635a793adbd",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Doc edit\",\n\t\"ruta\":\"https://github.com/typeorm/typeorm\",\n\t\"leccion\":{\n\t\t\"id\":{{leccion_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/documentacion/{{documentacion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"documentacion",
+						"{{documentacion_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Documentacion Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b463e60b-2d0d-43dc-9a07-a7fb8008e84c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/documentacion/{{documentacion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"documentacion",
+						"{{documentacion_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Foro Create ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5af55a1-0408-41a8-9390-4056884c3b98",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"foro_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"curso\":{\n\t\t\"id\":{{curso_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/foro/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"foro",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

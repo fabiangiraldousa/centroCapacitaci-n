@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "8f9df7f9-4fbd-4f95-af1a-42e744de6a64",
+		"name": "Modulo Master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Modulo Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fdd5a5df-45b3-4a72-968d-678382438fcc",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"modulo_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Experimentación\",\n\t\"curso\":{\n\t\t\"id\":{{curso_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/modulo",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"modulo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modulo List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cdef57d5-045b-4bc5-ae74-9d612617d94d",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/modulo/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"modulo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modulo Single Curso",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/modulo/curso/{{curso_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"modulo",
+						"curso",
+						"{{curso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modulo Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0a22fdfc-ab43-44e8-bdfe-3853d2700575",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Experimentación Edit\",\n\t\"curso\":{\n\t\t\"id\":{{curso_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/modulo/{{modulo_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"modulo",
+						"{{modulo_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modulo Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aebbf64e-2f1c-433a-94ab-fd0c1148e824",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/modulo/{{modulo_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"modulo",
+						"{{modulo_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

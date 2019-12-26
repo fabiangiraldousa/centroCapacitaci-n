@@ -9,6 +9,7 @@ import { ModuloModule } from './modulo/modulo.module';
 import { LeccionModule } from './leccion/leccion.module';
 import { DocumentacionModule } from './documentacion/documentacion.module';
 import { ForoModule } from './foro/foro.module';
+import { ComentarioModule } from './comentario/comentario.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ForoModule } from './foro/foro.module';
     LeccionModule,
     DocumentacionModule,
     ForoModule,
+    ComentarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

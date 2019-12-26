@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "a44efbe1-d222-4915-8f92-91f48e29f3cc",
+		"name": "Comentario-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comentario-master-tech",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9184635e-99db-4c39-b136-df266168259f",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"comentario_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"texto\":\"Comentario 1\",\n\t\"fecha\":\"2016-04-06T23:59:30\",\n\t\"calificacion\":2.0,\n\t\"usuario\":{\n\t\t\"id\":{{usuario_id}}\n\t},\n\t\"foro\":{\n\t\t\"id\":{{foro_id}}\n\t}\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/comentario/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"comentario",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
