@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "06f96f5a-f627-4e98-b3bc-8998e2812a4c",
+		"name": "Usuario-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c6c0cc8-9686-425d-88f7-9ecc3d6f00f6",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"user_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":2,\n\t\"nombre\":\"Admin master\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/usuario/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"usuario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "299c8ac4-9f1f-45bd-9b43-a629e057d724",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/usuario/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"usuario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d663349d-bc1b-420a-b90c-69a5a447d495",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Admin master edit\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/usuario/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"usuario",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d24d1ddf-792b-403e-9502-8fdec24eb6f2",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/usuario/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"usuario",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "26e60631-93d3-4894-b264-3f58258620e5",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/usuario/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"usuario",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

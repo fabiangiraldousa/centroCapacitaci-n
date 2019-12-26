@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "f6256ac0-285e-4dbe-8db9-55eba3c4c042",
+		"name": "Leccion-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Leccion Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e33fd2dc-d46d-44d8-88f8-d522ce1ef3a7",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"leccion_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Leccion1\",\n\t\"descripcion\":\"Descripcion\",\n\t\"orden\":1,\n\t\"video\":\"https://www.youtube.com/watch?v=xyY4IZ3JDFE\",\n\t\"duracion\":120,\n\t\"modulo\":{\n\t\t\"id\":{{modulo_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/leccion/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"leccion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leccion List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b920a2d-2fc6-44bb-9133-919a9c0a6678",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/leccion/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"leccion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leccion Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4dd06a82-2f5b-4efa-93f3-f3d6c3368ded",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/leccion/{{leccion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"leccion",
+						"{{leccion_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leccion Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0aadb86d-4858-4321-9d6e-8f3cf16f042b",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Leccion edit\",\n\t\"descripcion\":\"Descripcion\",\n\t\"orden\":1,\n\t\"video\":\"https://www.youtube.com/watch?v=xyY4IZ3JDFE\",\n\t\"duracion\":120,\n\t\"modulo\":{\n\t\t\"id\":{{modulo_id}}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/leccion/{{leccion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"leccion",
+						"{{leccion_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leccion Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d31262e0-f63e-4247-a32d-cbf3d103a11f",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/leccion/{{leccion_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"leccion",
+						"{{leccion_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

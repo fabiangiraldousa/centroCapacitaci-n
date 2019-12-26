@@ -1,4 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { getMetadataArgsStorage } from 'typeorm';
 
 require('dotenv').config();
 
@@ -32,17 +33,15 @@ class ConfigService {
   public getTypeOrmConfig(): TypeOrmModuleOptions {
     return {
       type: 'postgres',
-
       host: this.getValue('POSTGRES_HOST'),
       port: parseInt(this.getValue('POSTGRES_PORT')),
       username: this.getValue('POSTGRES_USER'),
       password: this.getValue('POSTGRES_PASSWORD'),
       database: this.getValue('POSTGRES_DATABASE'),
-
-      entities: ['**/*.entity{.ts,.js}'],
-
+      synchronize:true,
+      logging:true,
+      entities: getMetadataArgsStorage().tables.map(tbl => tbl.target),
       migrationsTableName: 'migration',
-
       migrations: ['src/migration/*.ts'],
 
       cli: {
