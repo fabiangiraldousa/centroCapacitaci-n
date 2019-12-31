@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "f31df4ed-fee2-4ec8-87f2-9a27ff5c3687",
+		"name": "Area-Conocimiento-master-tech ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Area Conocimiento Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d8bbdf8-afcc-46f7-b3f3-5ace3c209abd",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"area_conocimiento_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"nombre\": \"Area 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Area Conocimiento List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd5c649d-bd65-488a-a048-572ba0efb6b0",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Area Conocimiento Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9606cd17-296a-46ed-aae0-715c9796c51c",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/{{area_conocimiento_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						"{{area_conocimiento_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Area Conocimiento Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1fdea9cc-9d8b-4468-85c6-e129717890c1",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Habilidad edit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/{{area_conocimiento_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						"{{area_conocimiento_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Area Conocimiento Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb9eec50-3b58-42a5-b66f-abed6ee1f890",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/{{area_conocimiento_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						"{{area_conocimiento_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

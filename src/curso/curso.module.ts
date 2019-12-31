@@ -9,4 +9,5 @@ import { CursoController } from './curso.controller';
   providers: [CursoService],
   controllers: [CursoController],
 })
+
 export class CursoModule {}

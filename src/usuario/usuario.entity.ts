@@ -1,7 +1,5 @@
   
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-import { text } from 'express';
-import { type } from 'os';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Curso } from 'src/curso/curso.entity';
 
 enum Rol {
@@ -33,6 +31,12 @@ export class Usuario {
 
   @Column()
   thumbnail:string;
+
+  @Column('date')
+  fecha_nacimiento:Date;
+
+  @Column()
+  social_profile:string;
 
   @OneToMany(type=>Curso,Curso=>Curso.usuario)
   cursos:Curso[];
