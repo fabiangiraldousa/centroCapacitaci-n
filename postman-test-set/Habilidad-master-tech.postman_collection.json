@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "e8697a33-2cf6-4143-9ae3-011768af541b",
+		"name": "Habilidad-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Habilidad Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d8bbdf8-afcc-46f7-b3f3-5ace3c209abd",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"habilidad_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"nombre\": \"Habilidad 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"habilidad",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Habilidad List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd5c649d-bd65-488a-a048-572ba0efb6b0",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"habilidad",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Habilidad Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9606cd17-296a-46ed-aae0-715c9796c51c",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/{{habilidad_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"habilidad",
+						"{{habilidad_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Habilidad Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1fdea9cc-9d8b-4468-85c6-e129717890c1",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Habilidad edit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/{{habilidad_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"habilidad",
+						"{{habilidad_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Habilidad Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb9eec50-3b58-42a5-b66f-abed6ee1f890",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/{{habilidad_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"habilidad",
+						"{{habilidad_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
