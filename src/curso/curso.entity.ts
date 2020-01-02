@@ -1,7 +1,7 @@
   
-import { Column, Entity, PrimaryGeneratedColumn,ManyToOne, OneToMany, OneToOne } from 'typeorm';
-import { Usuario } from 'src/usuario/usuario.entity';
+import { Column, Entity, PrimaryGeneratedColumn,ManyToOne, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { Modulo } from 'src/modulo/modulo.entity';
+import { AreaConocimiento } from 'src/area-conocimiento/area-conocimiento.entity';
 
 @Entity()
 export class Curso {
@@ -17,8 +17,14 @@ export class Curso {
   @Column()
   thubmnail:string;
 
-  @ManyToOne(type=>Usuario,Usuario=>Usuario.id)
-  usuario:Usuario;
+  @Column()
+  precio:string;
+
+  @Column()
+  calificacion:string;
+
+  @ManyToOne(type=>AreaConocimiento,AreaConocimiento=>AreaConocimiento.cursos)
+  areaConocimiento:AreaConocimiento;
   
   @OneToMany(type=>Modulo,Modulo=>Modulo.curso)
   modulos:Modulo[];

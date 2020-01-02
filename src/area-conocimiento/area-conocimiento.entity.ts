@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Curso } from 'src/curso/curso.entity';
 
 @Entity()
 export class AreaConocimiento {
@@ -9,4 +10,6 @@ export class AreaConocimiento {
     @Column()
     nombre:string;
 
+    @OneToMany(type=>Curso,curso=>curso.areaConocimiento)
+    cursos:Curso[];
 }

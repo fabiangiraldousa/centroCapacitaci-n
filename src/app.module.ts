@@ -12,6 +12,10 @@ import { ForoModule } from './foro/foro.module';
 import { ComentarioModule } from './comentario/comentario.module';
 import { AreaConocimientoModule } from './area-conocimiento/area-conocimiento.module';
 import { HabilidadModule } from './habilidad/habilidad.module';
+import { HabilidadCursoModule } from './habilidad-curso/habilidad-curso.module';
+import { RecursoModule } from './recurso/recurso.module';
+import { VideoModule } from './video/video.module';
+import { ProgresoVideoModule } from './progreso-video/progreso-video.module';
 
 @Module({
   imports: [
@@ -25,6 +29,10 @@ import { HabilidadModule } from './habilidad/habilidad.module';
     ComentarioModule,
     AreaConocimientoModule,
     HabilidadModule,
+    HabilidadCursoModule,
+    RecursoModule,
+    VideoModule,
+    ProgresoVideoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

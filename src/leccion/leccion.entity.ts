@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn,ManyToOne, OneToMany } from 'typeorm';
 import { Modulo } from 'src/modulo/modulo.entity';
-import { Documentacion } from 'src/documentacion/documentacion.entity';
+import { Recurso } from 'src/recurso/recurso.entity';
 
 @Entity()
 export class Leccion{
@@ -18,14 +18,11 @@ export class Leccion{
     orden:number;
 
     @Column()
-    video:string;
-
-    @Column()
-    duracion:number;
+    gratuita:boolean;
 
     @ManyToOne(type=>Modulo, Modulo=>Modulo.id)
     modulo:Modulo;
 
-    @OneToMany(type=>Documentacion,Documentacion=>Documentacion.leccion)
-    documentos:Documentacion;
+    @OneToMany(type => Recurso, Recurso => Recurso.id)
+    recursos:Recurso[];
 }

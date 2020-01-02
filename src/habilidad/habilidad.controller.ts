@@ -10,7 +10,7 @@ import { Crud } from '@nestjsx/crud';
   })
 @Controller('habilidad')
 export class HabilidadController {
-    constructor(public service:HabilidadService){
+    constructor(public service:HabilidadService){ 
         
     }
 }

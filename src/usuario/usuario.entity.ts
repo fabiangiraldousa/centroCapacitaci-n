@@ -1,6 +1,5 @@
   
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Curso } from 'src/curso/curso.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 enum Rol {
     Administrador = 'Administrador',
@@ -37,7 +36,4 @@ export class Usuario {
 
   @Column()
   social_profile:string;
-
-  @OneToMany(type=>Curso,Curso=>Curso.usuario)
-  cursos:Curso[];
 }
