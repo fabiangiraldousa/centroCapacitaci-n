@@ -11,7 +11,7 @@ export class Curso {
   @Column()
   nombre: string;
 
-  @Column()
+  @Column("text")
   descripcion:string;
   
   @Column()

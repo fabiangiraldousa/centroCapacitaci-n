@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "8f9df7f9-4fbd-4f95-af1a-42e744de6a64",
-		"name": "Modulo Master-tech",
+		"_postman_id": "dae47ec7-ff76-4ff3-92fe-3c263e2b2c1d",
+		"name": "Habilidad-Curso-master-tech",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -105,15 +105,15 @@
 			"response": []
 		},
 		{
-			"name": "Modulo Create",
+			"name": "Habilidad Create Copy",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "fdd5a5df-45b3-4a72-968d-678382438fcc",
+						"id": "8d8bbdf8-afcc-46f7-b3f3-5ace3c209abd",
 						"exec": [
 							"var response=JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"modulo_id\",response.id);",
+							"postman.setGlobalVariable(\"habilidad_id\",response.id);",
 							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
 						],
 						"type": "text/javascript"
@@ -132,7 +132,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Experimentación\",\n\t\"descripcion\":\"Descripcion\",\n\t\"descripcion_long\":\"Descripcion Long\",\n\t\"curso\":{\n\t\t\"id\":{{curso_id}}\n\t}\n}",
+					"raw": "{\n \"nombre\": \"Habilidad 1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,46 +140,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{localhost}}:{{puerto}}/modulo",
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad/",
 					"protocol": "http",
 					"host": [
 						"{{localhost}}"
 					],
 					"port": "{{puerto}}",
 					"path": [
-						"modulo"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modulo List",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "cdef57d5-045b-4bc5-ae74-9d612617d94d",
-						"exec": [
-							"var response=JSON.parse(responseBody);",
-							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{localhost}}:{{puerto}}/modulo/",
-					"protocol": "http",
-					"host": [
-						"{{localhost}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"modulo",
+						"habilidad",
 						""
 					]
 				}
@@ -187,40 +155,62 @@
 			"response": []
 		},
 		{
-			"name": "Modulo Single Curso",
+			"name": "Habilidad-Curso Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6ebb97b-7f43-46ae-958a-ca7134193a0c",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"habilidad_curso_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
-						"key": "id",
-						"value": "1",
-						"type": "text",
-						"disabled": true
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"habilidad\":{{habilidad_id}},\n \"curso\":{{curso_id}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://{{localhost}}:{{puerto}}/modulo/curso/{{curso_id}}",
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad-curso/",
 					"protocol": "http",
 					"host": [
 						"{{localhost}}"
 					],
 					"port": "{{puerto}}",
 					"path": [
-						"modulo",
-						"curso",
-						"{{curso_id}}"
+						"habilidad-curso",
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Modulo Edit",
+			"name": "Habilidad Curso Edit",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "0a22fdfc-ab43-44e8-bdfe-3853d2700575",
+						"id": "d1a18286-0bd4-4404-aab8-cb8cd67f5fef",
 						"exec": [
 							"var response=JSON.parse(responseBody);",
 							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
@@ -241,7 +231,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Experimentación Edit\",\n\t\"descripcion\":\"Descripcion\",\n\t\"descripcion_long\":\"Descripcion Long\",\n\t\"curso\":{\n\t\t\"id\":{{curso_id}}\n\t}\n}",
+					"raw": "{\n \"habilidad\":{{habilidad_id}},\n \"curso\":{{curso_id}}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -249,47 +239,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{localhost}}:{{puerto}}/modulo/{{modulo_id}}",
+					"raw": "http://{{localhost}}:{{puerto}}/habilidad-curso/{{habilidad_curso_id}}",
 					"protocol": "http",
 					"host": [
 						"{{localhost}}"
 					],
 					"port": "{{puerto}}",
 					"path": [
-						"modulo",
-						"{{modulo_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modulo Delete",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "aebbf64e-2f1c-433a-94ab-fd0c1148e824",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://{{localhost}}:{{puerto}}/modulo/{{modulo_id}}",
-					"protocol": "http",
-					"host": [
-						"{{localhost}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"modulo",
-						"{{modulo_id}}"
+						"habilidad-curso",
+						"{{habilidad_curso_id}}"
 					]
 				}
 			},
