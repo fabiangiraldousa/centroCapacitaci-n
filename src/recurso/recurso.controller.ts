@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Param } from '@nestjs/common';
 import { Crud } from '@nestjsx/crud';
 import { Recurso } from './recurso.entity';
 import { RecursoService } from './recurso.service';
@@ -10,7 +10,11 @@ import { RecursoService } from './recurso.service';
 })
 @Controller('recurso')
 export class RecursoController {
-    constructor(public service:RecursoService){
-        
-    }
+    constructor(public service:RecursoService){}
+
+  @Get('/especifico/:id')
+  getModulosCurso(@Param('id',ParseIntPipe) id:number){
+    return this.service.getRecursoEspecifico(id);
+  }
+
 }

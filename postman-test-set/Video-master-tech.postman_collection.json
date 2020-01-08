@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "4b83b51f-dd88-4f7b-811b-8c1def1ad005",
+		"name": "Video-master-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Video Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "48b76f1f-934d-4063-b611-fece13dabe9e",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"video_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\":\"https://vimeo.com/381331390\",\n\t\"duracion\":12\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/video/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"video",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video List ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aea69967-b16b-4d2d-917d-b54c1f0a30a4",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/video/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"video",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c750cb5-1bef-4c2b-b795-b081734032da",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"url\": \"https://vimeo.com/381331390\",\n        \"duracion\": 14\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/video/{{video_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"video",
+						"{{video_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video Single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49775db0-3046-47d4-812a-414e6a47e18b",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/video/{{video_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"video",
+						"{{video_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e70a6c11-25f1-45f2-8020-8e386d38bd39",
+						"exec": [
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/video/{{video_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"video",
+						"{{video_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
