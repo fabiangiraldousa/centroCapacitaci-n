@@ -33,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\":2,\n\t\"nombre\":\"Admin master\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\"\n}",
+					"raw": "{\n\t\"id\":2,\n\t\"nombre\":\"Admin master\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"social_profile\":\"http://localhost/\",\n\t\"fecha_nacimiento\":\"1992-04-06\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,7 +63,7 @@
 					"script": {
 						"id": "299c8ac4-9f1f-45bd-9b43-a629e057d724",
 						"exec": [
-							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
 						],
 						"type": "text/javascript"
 					}
@@ -113,7 +113,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Admin master edit\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\"\n}",
+					"raw": "{\n\t\"nombre\":\"Admin master edit\",\n\t\"email\":\"admin.master@usa.com\",\n\t\"num_celular\":\"203020\",\n\t\"password\":\"314162019\",\n\t\"rol\":\"Administrador\",\n\t\"thumbnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"social_profile\":\"http://localhost/\",\n\t\"fecha_nacimiento\":\"1992-04-06\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +143,7 @@
 					"script": {
 						"id": "d24d1ddf-792b-403e-9502-8fdec24eb6f2",
 						"exec": [
-							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
 						],
 						"type": "text/javascript"
 					}

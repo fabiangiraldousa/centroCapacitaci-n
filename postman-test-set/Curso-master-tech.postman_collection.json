@@ -6,6 +6,56 @@
 	},
 	"item": [
 		{
+			"name": "Area Conocimiento Create Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d8bbdf8-afcc-46f7-b3f3-5ace3c209abd",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"area_conocimiento_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"nombre\": \"Area 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/area-conocimiento/",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"area-conocimiento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Curso Create",
 			"event": [
 				{
@@ -33,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Linux\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"usuario\":{\n\t\t\"id\":{{user_id}}\n\t}\n\t\n}",
+					"raw": "{\n\t\"nombre\":\"Linux\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"areaConocimiento\":{{area_conocimiento_id}},\n\t\"precio\":12.98,\n\t\"calificacion\":4\n\t\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,7 +215,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Linux edit\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada4.jpg\",\n\t\"usuario\":{\n\t\t\"id\":{{user_id}}\n\t}\n\t\n}",
+					"raw": "{\n\t\"nombre\":\"Linux edit\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada4.jpg\",\n\t\"areaConocimiento\":{{area_conocimiento_id}},\n\t\"precio\":12.98,\n\t\"calificacion\":4\n\t\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -195,7 +245,6 @@
 					"script": {
 						"id": "0269a7d5-528f-420b-9fc0-36f791afab08",
 						"exec": [
-							"var response=JSON.parse(responseBody);",
 							"tests[\"ESTADO NORMAL\"] = responseCode.code === 200;"
 						],
 						"type": "text/javascript"
