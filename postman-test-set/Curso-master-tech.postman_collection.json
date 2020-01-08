@@ -105,6 +105,55 @@
 			"response": []
 		},
 		{
+			"name": "Curso Create Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "429a0353-9bc1-48db-a4cb-ca92965a4ba4",
+						"exec": [
+							"var response=JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"curso_id\",response.id);",
+							"tests[\"ESTADO NORMAL\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Linux\",\n\t\"descripcion\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae maximus sem. Phasellus sed nisi vel sapien elementum lacinia. Etiam consequat eget libero non facilisis. Morbi vehicula quam sed lacus porttitor, sit amet auctor lorem egestas. Nullam finibus enim arcu, ac volutpat ligula ultrices ac. Vivamus vestibulum, ex ut blandit tincidunt, dolor erat tristique risus, id blandit est est nec metus. Proin pulvinar, nibh nec vulputate malesuada, quam nibh semper neque, et vestibulum risus eros eget nulla. Curabitur eu iaculis dolor. Integer sit amet mauris arcu. Nunc hendrerit consequat ligula, at elementum eros tincidunt non.\",\n\t\"thubmnail\":\"https://aws.amazon.com/s3/file/e43l33a/portada2.jpg\",\n\t\"areaConocimiento\":{{area_conocimiento_id}},\n\t\"precio\":12.98,\n\t\"calificacion\":4\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Cursos List",
 			"event": [
 				{
@@ -182,6 +231,27 @@
 					"port": "{{puerto}}",
 					"path": [
 						"curso",
+						"{{curso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curso Detalle master-tech",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{localhost}}:{{puerto}}/curso/detail/{{curso_id}}",
+					"protocol": "http",
+					"host": [
+						"{{localhost}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"curso",
+						"detail",
 						"{{curso_id}}"
 					]
 				}

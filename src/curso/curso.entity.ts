@@ -28,5 +28,4 @@ export class Curso {
   
   @OneToMany(type=>Modulo,Modulo=>Modulo.curso)
   modulos:Modulo[];
-
 }
