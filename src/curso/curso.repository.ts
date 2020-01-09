@@ -9,6 +9,7 @@ export class CursoRepositorio extends Repository<Curso>{
     const curso = await this.createQueryBuilder("curso")
                         .leftJoinAndSelect("curso.modulos", "modulo")
                         .where('curso.id = :id',{id:id});
-        return await curso.getOne();
+        let entityCurso=await curso.getOne();
+        return  entityCurso;
      }
 }
